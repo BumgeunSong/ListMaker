@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ListMaker</string>
+    <string name="cd_back_icon">Back Icon</string>
 </resources>
