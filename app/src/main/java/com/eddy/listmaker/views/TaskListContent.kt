@@ -24,12 +24,18 @@ fun TaskListScreen(
             )
         },
         content = {
-            TaskListContent(
-                modifier = Modifier.padding(it).fillMaxSize(),
-                tasks = tasks,
-                onClick = { taskName ->
-                    println(taskName)
-                })
+            if (tasks.isEmpty()) {
+                EmptyView("태스크가 없어요")
+            } else {
+                TaskListContent(
+                    modifier = Modifier
+                        .padding(it)
+                        .fillMaxSize(),
+                    tasks = tasks,
+                    onClick = { taskName ->
+                        println(taskName)
+                    })
+            }
         },
         floatingActionButton = {
             ListMakerFloatingActionButton(
