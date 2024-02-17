@@ -10,19 +10,20 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.eddy.listmaker.data.TaskList
 import com.eddy.listmaker.ui.theme.ListMakerTheme
+import com.eddy.listmaker.views.TaskListScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             ListMakerTheme {
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    Greeting("Android")
-                }
+                TaskListScreen(tasks = listOf(
+                    TaskList(name = "task 1"),
+                    TaskList(name = "task 2"),
+                    TaskList(name = "task 3")
+                ))
             }
         }
     }
@@ -40,6 +41,10 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 @Composable
 fun GreetingPreview() {
     ListMakerTheme {
-        Greeting("Android")
+        TaskListScreen(tasks = listOf(
+            TaskList(name = "task 1"),
+            TaskList(name = "task 2"),
+            TaskList(name = "task 3")
+        ))
     }
 }

@@ -1,6 +1,7 @@
 package com.eddy.listmaker.views
 
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Scaffold
@@ -11,7 +12,9 @@ import com.eddy.listmaker.R
 import com.eddy.listmaker.data.TaskList
 
 @Composable
-fun TaskListScreen() {
+fun TaskListScreen(
+    tasks: List<TaskList>
+) {
     Scaffold(
         topBar = {
             ListMakerTopAppBar(
@@ -23,7 +26,7 @@ fun TaskListScreen() {
         content = {
             TaskListContent(
                 modifier = Modifier.padding(it).fillMaxSize(),
-                tasks = emptyList(),
+                tasks = tasks,
                 onClick = { taskName ->
                     println(taskName)
                 })
