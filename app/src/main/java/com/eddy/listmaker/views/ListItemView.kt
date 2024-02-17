@@ -16,7 +16,10 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.eddy.listmaker.Greeting
+import com.eddy.listmaker.ui.theme.ListMakerTheme
 
 @Composable
 fun ListItemView(value: String, onClick: (String) -> Unit) {
@@ -35,5 +38,15 @@ fun ListItemView(value: String, onClick: (String) -> Unit) {
             Text(text = value, modifier = Modifier.size(4.dp))
         }
         Spacer(modifier = Modifier.size(8.dp))
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun GreetingPreview() {
+    ListMakerTheme {
+        ListItemView(value = "이 리스트에 들어가는 텍스트", onClick = {
+            println(it)
+        })
     }
 }
