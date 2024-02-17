@@ -2,5 +2,8 @@
     <string name="app_name">ListMaker</string>
     <string name="cd_back_icon">Back Icon</string>
     <string name="cd_add_icon">Add</string>
-    <string name="label_create">create_task\n</string>
+    <string name="label_create">create_task</string>
+    <string name="label_list_maker">리스트 메이커</string>
+    <string name="name_of_list">어떤 리스트인가요?</string>
+    <string name="task_hint">크로스핏 클래스 가기</string>
 </resources>
