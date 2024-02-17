@@ -25,7 +25,7 @@ fun TaskListScreen(
         },
         content = {
             if (tasks.isEmpty()) {
-                EmptyView("태스크가 없어요")
+                EmptyView(stringResource(id = R.string.no_task_in_list))
             } else {
                 TaskListContent(
                     modifier = Modifier
