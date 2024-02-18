@@ -6,15 +6,20 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.lifecycle.AndroidViewModel
 import com.eddy.listmaker.R
 import com.eddy.listmaker.data.TaskList
+import com.eddy.listmaker.viewModel.TaskListViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 
 @Composable
 fun TaskListScreen(
-    tasks: List<TaskList>
+    viewModel: TaskListViewModel = viewModel()
 ) {
+    val tasks = viewModel.taskListState.collectAsState().value
     Scaffold(
         topBar = {
             ListMakerTopAppBar(

@@ -4,8 +4,14 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.preference.PreferenceManager
 import com.eddy.listmaker.data.TaskList
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 
 class TaskListViewModel(private val application: Application) : AndroidViewModel(application) {
+
+    private val _taskListState = MutableStateFlow(listOf<TaskList>())
+    val taskListState: StateFlow<List<TaskList>> = _taskListState.asStateFlow()
 
     fun save(list: TaskList) {
         val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(application).edit()

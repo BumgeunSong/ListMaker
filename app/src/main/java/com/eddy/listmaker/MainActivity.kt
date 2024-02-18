@@ -19,7 +19,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ListMakerTheme {
-                TaskListScreen(tasks = listOf())
+                TaskListScreen()
             }
         }
     }
@@ -37,6 +37,6 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 @Composable
 fun GreetingPreview() {
     ListMakerTheme {
-        TaskListScreen(tasks = listOf())
+        TaskListScreen()
     }
 }
