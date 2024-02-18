@@ -5,7 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.preference.PreferenceManager
 import com.eddy.listmaker.data.TaskList
 
-class TaskListViewModel(val application: Application) : AndroidViewModel(application) {
+class TaskListViewModel(private val application: Application) : AndroidViewModel(application) {
 
     fun save(list: TaskList) {
         val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(application).edit()
