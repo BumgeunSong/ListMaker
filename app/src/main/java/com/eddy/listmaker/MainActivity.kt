@@ -11,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.eddy.listmaker.data.TaskList
+import com.eddy.listmaker.navigation.AppNavHost
 import com.eddy.listmaker.ui.theme.ListMakerTheme
 import com.eddy.listmaker.views.TaskListScreen
 
@@ -19,7 +20,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ListMakerTheme {
-                TaskListScreen()
+                AppNavHost()
             }
         }
     }
@@ -29,6 +30,6 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun GreetingPreview() {
     ListMakerTheme {
-        TaskListScreen()
+        AppNavHost()
     }
 }
