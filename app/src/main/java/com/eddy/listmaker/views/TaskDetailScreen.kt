@@ -25,6 +25,26 @@ import com.eddy.listmaker.R
 import com.eddy.listmaker.data.TaskList
 
 @Composable
+fun TaskDetailScreen(
+    tasks: List<String>
+) {
+    Scaffold(topBar = {
+        ListMakerTopAppBar(
+            title = stringResource(id = R.string.label_detail),
+            showBackButton = true,
+            onBackPressed = {}
+        )
+    },
+        content = {
+            TaskDetailScreenContent(
+                modifier = Modifier.padding(it).fillMaxSize(),
+                tasks = tasks
+            )
+        }
+    )
+}
+
+@Composable
 fun TaskDetailScreenContent(
     modifier: Modifier,
     tasks: List<String>,
