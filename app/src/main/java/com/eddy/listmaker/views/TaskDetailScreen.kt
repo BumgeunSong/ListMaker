@@ -40,6 +40,15 @@ fun TaskDetailScreen(
                 modifier = Modifier.padding(it).fillMaxSize(),
                 tasks = tasks
             )
+        },
+        floatingActionButton = {
+            ListMakerFloatingActionButton(
+                title = stringResource(id = R.string.task_to_add),
+                inputHint = stringResource(id = R.string.task_hint),
+                onFabPressed = { todoName ->
+                    println(todoName)
+                }
+            )
         }
     )
 }
