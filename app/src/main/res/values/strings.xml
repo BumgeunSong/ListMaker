@@ -8,4 +8,5 @@
     <string name="task_hint">크로스핏 클래스 가기</string>
     <string name="cd_list_icon">list icon</string>
     <string name="no_task_in_list">태스크가 없어요</string>
+    <string name="label_detail">할일</string>
 </resources>
