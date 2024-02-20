@@ -11,7 +11,9 @@ fun AppNavHost() {
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = Screens.TaskListScreen.route) {
         composable(Screens.TaskListScreen.route) {
-            TaskListScreen()
+            TaskListScreen(navigate = {
+                navController.navigate(Screens.TaskDetailScreen.route)
+            })
         }
     }
 }

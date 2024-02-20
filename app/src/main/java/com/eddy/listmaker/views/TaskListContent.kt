@@ -21,7 +21,8 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 
 @Composable
 fun TaskListScreen(
-    viewModel: TaskListViewModel = viewModel()
+    viewModel: TaskListViewModel = viewModel(),
+    navigate: (String) -> Unit
 ) {
     val viewModelTasks = viewModel.readList().toList()
     var tasks by remember { mutableStateOf(viewModelTasks) }
@@ -44,7 +45,7 @@ fun TaskListScreen(
                         .fillMaxSize(),
                     tasks = tasks,
                     onClick = { taskName ->
-                        println(taskName)
+                        navigate(taskName)
                     })
             }
         },
@@ -55,6 +56,7 @@ fun TaskListScreen(
                 onFabPressed = {
                     tasks = (tasks + TaskList(it))
                     viewModel.save(TaskList(it))
+                    navigate(it)
                 }
             )
         }

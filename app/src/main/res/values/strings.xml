@@ -9,4 +9,5 @@
     <string name="cd_list_icon">list icon</string>
     <string name="no_task_in_list">태스크가 없어요</string>
     <string name="label_detail">할일</string>
+    <string name="task_to_add">추가하기</string>
 </resources>
