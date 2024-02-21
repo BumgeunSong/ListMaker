@@ -1,5 +1,6 @@
 package com.eddy.listmaker.views
 
+import android.widget.Toast
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -19,6 +20,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.eddy.listmaker.R
@@ -28,6 +30,7 @@ import com.eddy.listmaker.data.TaskList
 fun TaskDetailScreen(
     tasks: List<String>
 ) {
+    val context = LocalContext.current
     Scaffold(topBar = {
         ListMakerTopAppBar(
             title = stringResource(id = R.string.label_detail),
@@ -37,7 +40,9 @@ fun TaskDetailScreen(
     },
         content = {
             TaskDetailScreenContent(
-                modifier = Modifier.padding(it).fillMaxSize(),
+                modifier = Modifier
+                    .padding(it)
+                    .fillMaxSize(),
                 tasks = tasks
             )
         },
@@ -46,7 +51,7 @@ fun TaskDetailScreen(
                 title = stringResource(id = R.string.task_to_add),
                 inputHint = stringResource(id = R.string.task_hint),
                 onFabPressed = { todoName ->
-                    println(todoName)
+                    Toast.makeText(context, todoName, Toast.LENGTH_SHORT).show()
                 }
             )
         }
