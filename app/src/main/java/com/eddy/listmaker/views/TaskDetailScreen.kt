@@ -28,14 +28,15 @@ import com.eddy.listmaker.data.TaskList
 
 @Composable
 fun TaskDetailScreen(
-    tasks: List<String>
+    taskListName: String?,
+    onBackPressed: () -> Unit
 ) {
     val context = LocalContext.current
     Scaffold(topBar = {
         ListMakerTopAppBar(
-            title = stringResource(id = R.string.label_detail),
+            title = taskListName ?: stringResource(id = R.string.label_detail),
             showBackButton = true,
-            onBackPressed = {}
+            onBackPressed = onBackPressed
         )
     },
         content = {
@@ -43,7 +44,7 @@ fun TaskDetailScreen(
                 modifier = Modifier
                     .padding(it)
                     .fillMaxSize(),
-                tasks = tasks
+                tasks = listOf("example task 1")
             )
         },
         floatingActionButton = {
