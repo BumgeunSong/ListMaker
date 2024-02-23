@@ -15,11 +15,11 @@ fun AppNavHost() {
     NavHost(navController = navController, startDestination = Screens.TaskListScreen.route) {
         composable(Screens.TaskListScreen.route) {
             TaskListScreen(navigate = { taskListName ->
-                navController.navigate("${Screens.TaskDetailScreen.route}/${taskListName}")
+                navController.navigate("${Screens.TaskDetailScreen.route}/$taskListName")
             })
         }
         composable(
-            route = Screens.TaskDetailScreen.route,
+            route = "${Screens.TaskDetailScreen.route}/{taskListName}",
             arguments = listOf(navArgument("taskListName") {
                 type = NavType.StringType
             })
