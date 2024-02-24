@@ -22,4 +22,8 @@ class TaskListManager(val context: Context) {
         }
         return taskLists
     }
+
+    fun readList(listName: String?) : List<String>? {
+        return readLists().firstOrNull { it.name == listName }?.tasks
+    }
 }

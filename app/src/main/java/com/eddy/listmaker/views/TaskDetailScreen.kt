@@ -19,12 +19,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.eddy.listmaker.R
 import com.eddy.listmaker.data.TaskList
+import com.eddy.listmaker.viewModel.TaskListManager
 
 @Composable
 fun TaskDetailScreen(
@@ -32,6 +34,12 @@ fun TaskDetailScreen(
     onBackPressed: () -> Unit
 ) {
     val context = LocalContext.current
+    val viewModel = TaskListManager(context)
+
+    var taskTodos by remember {
+        mutableStateOf(viewModel.readList(taskListName ?: "") ?: emptyList())
+    }
+
     Scaffold(topBar = {
         ListMakerTopAppBar(
             title = taskListName ?: stringResource(id = R.string.label_detail),
@@ -44,7 +52,7 @@ fun TaskDetailScreen(
                 modifier = Modifier
                     .padding(it)
                     .fillMaxSize(),
-                tasks = listOf("example task 1")
+                tasks = taskTodos
             )
         },
         floatingActionButton = {
@@ -52,7 +60,9 @@ fun TaskDetailScreen(
                 title = stringResource(id = R.string.task_to_add),
                 inputHint = stringResource(id = R.string.task_hint),
                 onFabPressed = { todoName ->
-                    Toast.makeText(context, todoName, Toast.LENGTH_SHORT).show()
+                    val newTaskTodos = taskTodos + listOf(todoName)
+                    viewModel.save(TaskList(taskListName ?: "default", newTaskTodos))
+                    taskTodos = viewModel.readList(taskListName ?: "default") ?: emptyList()
                 }
             )
         }
